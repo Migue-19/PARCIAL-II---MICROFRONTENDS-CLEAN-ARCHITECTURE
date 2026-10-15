@@ -11,6 +11,6 @@ export interface Customer {
 export interface RegisterCustomerDto {
   name: string;
   email: string;
-  phone: string;
-  company: string;
+  phone?: string;
+  company?: string;
 }
