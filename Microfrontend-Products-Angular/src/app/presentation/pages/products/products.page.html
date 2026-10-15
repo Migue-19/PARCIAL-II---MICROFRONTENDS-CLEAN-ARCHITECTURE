@@ -1,0 +1,45 @@
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <label class="form-label fw-bold" for="count">Listar productos</label>
+        <div class="input-group">
+            <input #count id="count" type="number" min="1" value="10" class="form-control" />
+            <button id="btn-all" type="button" class="btn btn-primary" (click)="loadAll(count.valueAsNumber)">Listar</button>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label fw-bold" for="idInput">Buscar por id</label>
+        <div class="input-group">
+            <input #idInput id="idInput" type="number" min="1" value="1" class="form-control" />
+            <button id="btn-id" type="button" class="btn btn-primary" (click)="loadById(idInput.valueAsNumber)">Buscar</button>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label fw-bold" for="filterSelect">Filtrar por categoría</label>
+        <div class="input-group">
+            <select #filterSelect id="filterSelect" class="form-select">
+                @for (option of categoryOptions; track option) {
+                    <option [value]="option">{{ option }}</option>
+                }
+            </select>
+            <button id="btn-filter" type="button" class="btn btn-primary" (click)="loadByCategory(filterSelect.value)">Filtrar</button>
+        </div>
+    </div>
+</div>
+
+@switch(state){
+
+    @case('loading'){
+        <app-alert alertState="loading" text="Cargando productos..." ></app-alert>
+    }
+
+    @case('error'){
+        <app-alert alertState="error" [text]="errorMessage" ></app-alert>
+    }
+
+    @case('success'){
+        <app-products-table [products]="products" ></app-products-table>
+    }
+
+}
