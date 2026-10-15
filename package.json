@@ -1,0 +1,37 @@
+{
+  "name": "parcial-ii-microfrontends-clean-architecture",
+  "version": "1.0.0",
+  "description": "Monorepositorio distribuido de Microfrontends (Angular + Module Federation) y Microservicios con Clean Architecture",
+  "private": true,
+  "workspaces": [
+    "frontend/*",
+    "backend/products-service",
+    "backend/customers-service"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm --prefix backend/products-service install",
+    "start:backend:products": "npm --prefix backend/products-service run dev",
+    "start:backend:orders": "cd backend/orders-service && ./mvnw spring-boot:run",
+    "start:backend:customers": "npm --prefix backend/customers-service run dev",
+    "start:frontend:host": "npm --prefix frontend/host run start",
+    "start:frontend:products": "npm --prefix frontend/mfe-products run start",
+    "start:frontend:orders": "npm --prefix frontend/mfe-orders run start",
+    "start:frontend:customers": "npm --prefix frontend/mfe-customers run start",
+    "test:mfe:products": "npm --prefix frontend/mfe-products run test",
+    "test:backend:products": "npm --prefix backend/products-service run test"
+  },
+  "keywords": [
+    "microfrontends",
+    "clean-architecture",
+    "module-federation",
+    "angular",
+    "spring-boot",
+    "nodejs",
+    "microservices"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
