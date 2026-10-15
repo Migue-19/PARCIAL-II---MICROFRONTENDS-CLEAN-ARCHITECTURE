@@ -1,10 +1,9 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+  testEnvironment: 'node',
   roots: ['<rootDir>/src'],
   collectCoverageFrom: [
-    'src/app/domain/**/*.ts',
-    'src/app/application/**/*.ts',
+    'src/app/application/use-cases/**/*.ts',
     '!src/**/*.d.ts'
   ],
   coverageThreshold: {

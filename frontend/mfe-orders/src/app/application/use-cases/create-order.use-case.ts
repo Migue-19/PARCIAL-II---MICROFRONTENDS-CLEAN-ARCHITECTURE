@@ -1,11 +1,7 @@
-import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Order, CreateOrderDto } from '../../domain/models/order.model';
 import { OrderRepository } from '../../domain/repositories/order.repository';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class CreateOrderUseCase {
   constructor(private readonly orderRepository: OrderRepository) {}
 
