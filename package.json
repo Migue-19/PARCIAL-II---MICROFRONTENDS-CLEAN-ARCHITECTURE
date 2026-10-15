@@ -18,7 +18,11 @@
     "start:frontend:orders": "npm --prefix frontend/mfe-orders run start",
     "start:frontend:customers": "npm --prefix frontend/mfe-customers run start",
     "test:mfe:products": "npm --prefix frontend/mfe-products run test",
-    "test:backend:products": "npm --prefix backend/products-service run test"
+    "test:mfe:orders": "npm --prefix frontend/mfe-orders run test",
+    "test:mfe:customers": "npm --prefix frontend/mfe-customers run test",
+    "test:backend:products": "npm --prefix backend/products-service run test",
+    "test:backend:customers": "npm --prefix backend/customers-service run test",
+    "test:phase2": "npm run test:mfe:orders && npm run test:mfe:customers && npm run test:backend:customers"
   },
   "keywords": [
     "microfrontends",

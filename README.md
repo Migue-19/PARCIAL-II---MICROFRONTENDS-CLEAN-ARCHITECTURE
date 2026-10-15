@@ -180,3 +180,28 @@ Para ejecutar las suites de pruebas unitarias configuradas para superar el 90% d
   cd frontend/mfe-products
   npm test
   ```
+
+- **MFE 2 - Orders** (100% de cobertura de casos de uso):
+  ```bash
+  npm run test:mfe:orders
+  ```
+
+- **MFE 3 - Customers** (100% de cobertura de casos de uso):
+  ```bash
+  npm run test:mfe:customers
+  ```
+
+- **Microservicio Customers** (100% de cobertura de casos de uso):
+  ```bash
+  npm run test:backend:customers
+  ```
+
+Para validar la suite de la Fase 2 completa:
+```bash
+npm run test:phase2
+```
+
+La cobertura de los MFEs se enfoca en la capa de aplicación, donde se ejecutan los
+tres casos de uso de cada microfrontend: listar, consultar por identificador y
+crear/registrar. Los servicios exponen la documentación OpenAPI en
+`/api-docs` (Customers) y `/swagger-ui.html` (Orders).
