@@ -9,19 +9,28 @@
     "backend/customers-service"
   ],
   "scripts": {
-    "install:all": "npm install && npm --prefix backend/products-service install",
-    "start:backend:products": "npm --prefix backend/products-service run dev",
-    "start:backend:orders": "cd backend/orders-service && ./mvnw spring-boot:run",
-    "start:backend:customers": "npm --prefix backend/customers-service run dev",
+    "install:all": "npm install && npm --prefix frontend/mfe-products install && npm --prefix frontend/mfe-orders install && npm --prefix frontend/mfe-customers install && npm --prefix frontend/host install && npm --prefix backend/products-service install && npm --prefix backend/customers-service install",
+
+    "start:host": "npm --prefix frontend/host run start",
     "start:frontend:host": "npm --prefix frontend/host run start",
     "start:frontend:products": "npm --prefix frontend/mfe-products run start",
     "start:frontend:orders": "npm --prefix frontend/mfe-orders run start",
     "start:frontend:customers": "npm --prefix frontend/mfe-customers run start",
-    "test:mfe:products": "npm --prefix frontend/mfe-products run test",
-    "test:mfe:orders": "npm --prefix frontend/mfe-orders run test",
-    "test:mfe:customers": "npm --prefix frontend/mfe-customers run test",
+
+    "start:backend:products": "npm --prefix backend/products-service run dev",
+    "start:backend:orders": "cd backend/orders-service && .\\mvnw.cmd spring-boot:run",
+    "start:backend:customers": "npm --prefix backend/customers-service run dev",
+
+    "start:all": "concurrently --names \"HOST,MFE-P,MFE-O,MFE-C,BE-P,BE-O,BE-C\" --prefix-colors \"bgBlue,bgGreen,bgYellow,bgMagenta,cyan,red,white\" \"npm run start:frontend:host\" \"npm run start:frontend:products\" \"npm run start:frontend:orders\" \"npm run start:frontend:customers\" \"npm run start:backend:products\" \"npm run start:backend:orders\" \"npm run start:backend:customers\"",
+
+    "test:mfe:products": "npm --prefix frontend/mfe-products run test -- --coverage",
+    "test:mfe:orders": "npm --prefix frontend/mfe-orders run test -- --coverage",
+    "test:mfe:customers": "npm --prefix frontend/mfe-customers run test -- --coverage",
     "test:backend:products": "npm --prefix backend/products-service run test",
     "test:backend:customers": "npm --prefix backend/customers-service run test",
+    "test:backend:orders": "cd backend/orders-service && .\\mvnw.cmd test",
+
+    "test:all": "npm run test:mfe:products && npm run test:mfe:orders && npm run test:mfe:customers && npm run test:backend:products && npm run test:backend:customers && npm run test:backend:orders",
     "test:phase2": "npm run test:mfe:orders && npm run test:mfe:customers && npm run test:backend:customers"
   },
   "keywords": [
